@@ -3,7 +3,19 @@ import 'package:flutter/material.dart';
 class Result extends StatelessWidget {
   final int score;
 
-  final String text;
+  const Result(this.score, {super.key});
+
+  String get finalResult {
+    if (score < 8) {
+      return 'Congratulations!';
+    } else if (score < 12) {
+      return 'Good!';
+    } else if (score < 16) {
+      return 'Awsome!';
+    } else {
+      return 'Nível Jedi!';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
