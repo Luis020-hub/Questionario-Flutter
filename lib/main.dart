@@ -6,27 +6,46 @@ void main() => runApp(const QuestionApp());
 
 class _QuestionAppState extends State<QuestionApp> {
   var _selectedQuestion = 0;
+  var _totalScore = 0;
   final _questions = [
     {
       'text': 'What is your favorite color?',
-      'Answers': ['Black', 'Red', 'Blue', 'White'],
+      'Answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 10},
+        {'text': 'Blue', 'score': 10},
+        {'text': 'White', 'score': 10}
+      ],
     },
     {
       'text': 'What is your favorite animal?',
-      'Answers': ['Bunny', 'Snake', 'Dog', 'Cat'],
+      'Answers': [
+        {'text': 'Bunny', 'score': 10},
+        {'text': 'Snake', 'score': 10},
+        {'text': 'Dog', 'score': 10},
+        {'text': 'Cat', 'score': 10}
+      ],
     },
     {
       'text': 'What is your favorite matter?',
-      'Answers': ['Math', 'History', 'Geography', 'Philosophy'],
+      'Answers': [
+        {'text': 'Math', 'score': 10},
+        {'text': 'History', 'score': 10},
+        {'text': 'Geography', 'score': 10},
+        {'text': 'Philosophy', 'score': 10}
+      ],
     }
   ];
 
-  void answering() {
+  void _answering(int score) {
     if (isThereSelecQuestion) {
       setState(() {
         _selectedQuestion++;
+        _totalScore += score;
       });
     }
+
+    print(_totalScore);
   }
 
   bool get isThereSelecQuestion {
@@ -44,9 +63,9 @@ class _QuestionAppState extends State<QuestionApp> {
               ? Quizz(
                   questions: _questions,
                   selectedQuestion: _selectedQuestion,
-                  whenAnswer: answering,
+                  whenAnswer: _answering,
                 )
-              : const Result('Thank you for your answers!!')),
+              : Result(_totalScore)),
     );
   }
 }
