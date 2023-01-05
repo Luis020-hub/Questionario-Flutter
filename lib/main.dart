@@ -44,8 +44,13 @@ class _QuestionAppState extends State<QuestionApp> {
         _totalScore += score;
       });
     }
+  }
 
-    print(_totalScore);
+  void _restart() {
+    setState(() {
+      _selectedQuestion = 0;
+      _totalScore = 0;
+    });
   }
 
   bool get isThereSelecQuestion {
@@ -65,7 +70,7 @@ class _QuestionAppState extends State<QuestionApp> {
                   selectedQuestion: _selectedQuestion,
                   whenAnswer: _answering,
                 )
-              : Result(_totalScore)),
+              : Result(_totalScore, _restart)),
     );
   }
 }
