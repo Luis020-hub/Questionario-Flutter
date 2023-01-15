@@ -1,6 +1,6 @@
 # Questionario
 
-A new Flutter project.
+Questionario com perguntas usando Flutter
 
 ## Getting Started
 
